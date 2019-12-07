@@ -1,0 +1,12 @@
+suod: required
+services:
+   - docker
+
+
+
+before_install:
+   - docker build -t pg/simplewebapp2 -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true pg/simplewebapp2 npm run test -- --coverage
+
